@@ -1,4 +1,4 @@
-const browserWidth = 1920;
+const browserWidth = 1953;
 const browserHeight = 1032;
 
 module.exports = {

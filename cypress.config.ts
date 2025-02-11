@@ -1,5 +1,5 @@
-// const browserWidth = 1920;
-// const browserHeight = 1024;
+const browserWidth = 1920;
+const browserHeight = 1032;
 
 module.exports = {
     video: false,
@@ -16,12 +16,26 @@ module.exports = {
             reportFilename: 'report',
             overwrite: true,
         },
-        /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
-        setupNodeEvents(on, config) {
-            // implement node event listeners here
+        setupNodeEvents(on) {
+            on('before:browser:launch', (browser, launchOptions) => {
+                if (browser.family === 'chromium') {
+                    launchOptions.args.push(`--window-size=${browserWidth},${browserHeight}`);
+                } else if (browser.family === 'firefox') {
+                    launchOptions.args.push(`--width=${browserWidth}`);
+                    launchOptions.args.push(`--height=${browserHeight}`);
+                }
+
+                if (browser.name === 'electron') {
+                    launchOptions.preferences.width = browserWidth;
+                    launchOptions.preferences.height = browserHeight;
+                }
+
+                return launchOptions;
+            });
         },
     },
     component: {
+        specPattern: 'src/**/*.cy.{js,jsx,ts,tsx}',
         devServer: {
             framework: 'react',
             bundler: 'vite',

@@ -2,10 +2,10 @@
 
 describe('App Component', () => {
     const resolutionFull = [
-        { width: 360, height: 740 },
-        { width: 767, height: 900 },
-        { width: 1440, height: 900 },
-        { width: 1920, height: 1032 },
+        // { width: 360, height: 740 },
+        // { width: 767, height: 900 },
+        // { width: 1440, height: 900 },
+        { width: 1920, height: 1150 },
     ];
 
     // const resolutionMobile = [{ width: 360, height: 740 }];

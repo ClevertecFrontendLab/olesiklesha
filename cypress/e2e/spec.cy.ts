@@ -9,7 +9,7 @@ describe('App Component', () => {
     // const resolutionMobile = [{ width: 360, height: 740 }];
     // const resolutionTablet = [{ width: 833, height: 900 }];
     // const resolutionLaptop = [{ width: 1440, height: 900 }];
-    const resolutionDesctop = [{ width: 1920, height: 1080 }];
+    const resolutionDesktop = [{ width: 1920, height: 1080 }];
 
     function takeScreenshots(screenshotName: string, resolution = resolutionFull) {
         cy.wait(1000);
@@ -26,6 +26,6 @@ describe('App Component', () => {
     });
 
     it('should take a screenshot of the app', () => {
-        takeScreenshots('main-page', resolutionDesctop);
+        takeScreenshots('main-page', resolutionDesktop);
     });
 });

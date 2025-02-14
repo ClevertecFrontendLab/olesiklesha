@@ -4,7 +4,6 @@ describe('App Component', () => {
     const resolutionFull = [
         { width: 360, height: 1150 },
         { width: 767, height: 1150 },
-        { width: 1440, height: 1150 },
         { width: 1920, height: 1150 },
     ];
 
@@ -15,9 +14,10 @@ describe('App Component', () => {
     function takeScreenshots(screenshotName: string, resolution = resolutionFull) {
         cy.wait(1000);
         for (let i = 0; i < resolution.length; i++) {
+            const capture = resolution[i].width < 1920 ? 'fullPage' : 'viewport';
             cy.viewport(resolution[i].width, resolution[i].height);
             cy.screenshot(`${screenshotName}_${resolution[i].width}x${resolution[i].height}`, {
-                capture: 'viewport',
+                capture,
             });
         }
     }
